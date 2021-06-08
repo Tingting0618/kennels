@@ -5,11 +5,11 @@ import { EmployeeCard } from "./employee/EmployeeCard"
 import "./employee/Employee.css"
 import { LocationCard } from "./location/LocationCard"
 import "./location/Location.css"
-import { CustomerCard } from "./customer/CustomerCard"
 import "./customer/Customer.css"
 import { AnimalProvider } from "./animal/AnimalProvider"
 import { AnimalList } from "./animal/AnimalList"
-
+import { CustomerProvider } from "./customer/CustomerProvider"
+import { CustomerList } from "./customer/CustomerList"
 
 export const Kennel = () => (
     <>
@@ -47,10 +47,9 @@ export const Kennel = () => (
 
         <h2>Customers</h2>
         <article className="customers">
-            <CustomerCard />
-            <CustomerCard />
-            <CustomerCard />
-            <CustomerCard />
+            <CustomerProvider>
+                <CustomerList />
+            </CustomerProvider>
         </article>
     </>
 )
