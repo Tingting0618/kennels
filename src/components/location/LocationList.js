@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import { LocationContext } from "./LocationProvider"
 import "./Location.css"
-import { useHistory } from 'react-router-dom'
+import { useHistory,Link } from 'react-router-dom'
 
 export const LocationList = () => {
   // This state changes when `getAnimals()` is invoked below
@@ -12,33 +12,37 @@ export const LocationList = () => {
     console.log("LocationList: useEffect - getLocations")
     getLocations()
   }, [])
-  
+
   const history = useHistory()
 
   return (
     <>
-    <h2>Locations</h2>
-    <button onClick={
-      () => history.push("/locations/create")
-    }>
-          Add Locations
-    </button>
-    <div className="locations">
-      {
-        locations.map(location => {
-          return (
-            <div className="location" id={`location--${location.id}`}>
-              <div className="location__name">
-                Name: { location.name }
+      <h2>Locations</h2>
+      <button onClick={
+        () => history.push("/locations/create")
+      }>
+        Add Locations
+      </button>
+      <div className="locations">
+        {
+          locations.map(location => {
+            return (
+              <div className="location">
+                <Link to={`/locations/detail/${location.id}`} key={location.id}>{location.name}</Link>
               </div>
-              <div className="location__breed">
-                Address: { location.address }
-              </div>
-            </div>
-          )
-        })
-      }
-    </div>
-  </>
-)
+            )
+          })
+        }
+      </div>
+    </>
+  )
 }
+
+{/* <div className="location" id={`location--${location.id}`}>
+<div className="location__name">
+  Name: { location.name }
+</div>
+<div className="location__breed">
+  Address: { location.address }
+</div>
+</div> */}

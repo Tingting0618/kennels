@@ -1,5 +1,5 @@
 // Add this import at the top
-import { useHistory } from 'react-router-dom'
+import { useHistory , Link } from 'react-router-dom'
 import React, { useContext, useEffect } from "react"
 import { AnimalContext } from "./AnimalProvider"
 import "./Animal.css"
@@ -32,20 +32,26 @@ return (
       {
         animals.map(animal => {
           return (
-            <div className="animal" id={`animal--${animal.id}`}>
-              <div className="animal__name">
-                Name: {animal.name}
-              </div>
-              <div className="animal__breed">
-                Breed: {animal.breed}
-              </div>
-            </div>
+            <div className="animal">
+            <Link to={`/animals/detail/${animal.id}`} key={animal.id}>{animal.name}</Link>
+           </div>
+
           )
         })
       }
     </div>
   </>
 )
+
+{/* <div className="animal" id={`animal--${animal.id}`}>
+<div className="animal__name">
+  Name: {animal.name}
+</div>
+<div className="animal__breed">
+  Breed: {animal.breed}
+</div>
+</div> */}
+
 
 //   return (
 //     <section className="animals">
