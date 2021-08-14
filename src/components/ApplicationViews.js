@@ -9,7 +9,7 @@ import { CustomerList } from "./customer/CustomerList"
 import { EmployeeProvider } from "./employee/EmployeeProvider"
 import { EmployeeList } from "./employee/EmployeeList"
 import { EmployeeForm } from "./employee/EmployeeForm"
-import {EmployeeDetail} from "./employee/EmployeeDetail"
+import { EmployeeDetail } from "./employee/EmployeeDetail"
 import { LocationProvider } from "./location/LocationProvider"
 import { LocationList } from "./location/LocationList"
 import { LocationForm } from "./location/LocationForm"
@@ -54,6 +54,10 @@ export const ApplicationViews = () => {
 
                             <Route path="/animals/detail/:animalId(\d+)">
                                 <AnimalDetail />
+                            </Route>
+
+                            <Route path="/animals/edit/:animalId(\d+)">
+                                <AnimalForm />
                             </Route>
 
                             {/* Render the animal list when http://localhost:3000/customers */}
