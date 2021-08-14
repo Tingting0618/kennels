@@ -24,6 +24,12 @@ export const EmployeeProvider = (props) => {
         .then(getEmployees)
     }
 
+    const deleteEmployee = employeeId => {
+        return fetch(`http://localhost:8088/employees/${employeeId}`, {
+            method: "DELETE"
+        })
+            .then(getEmployees)
+    }
     /*
         You return a context provider which has the
         `animals` state, `getAnimals` function,
@@ -32,7 +38,7 @@ export const EmployeeProvider = (props) => {
     */
     return (
         <EmployeeContext.Provider value={{
-            employees, getEmployees, addEmployee
+            employees, getEmployees, addEmployee,deleteEmployee
         }}>
             {props.children}
         </EmployeeContext.Provider>

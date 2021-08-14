@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from "react"
 import { EmployeeContext } from "./EmployeeProvider"
 import "./Employee.css"
 import { useParams } from "react-router-dom"
+import { useHistory } from 'react-router-dom'
+
 
 export const EmployeeDetail = () => {
-    const { employees } = useContext(EmployeeContext)
+    const { employees,deleteEmployee } = useContext(EmployeeContext)
     const [ employee, setEmployee ] = useState({location: {} })
 
     /*
@@ -12,6 +14,15 @@ export const EmployeeDetail = () => {
         of 5 in the animalId variable
     */
     const { employeeId } = useParams();
+
+    // Update this line of code to include releaseAnimal
+    const history = useHistory()
+    const handleLeave = () => {
+        deleteEmployee(employee.id)
+          .then(() => {
+            history.push("/employees")
+          })
+      }
 
     useEffect(() => {
         const thisEmployee = employees.find(a => a.id === parseInt(employeeId)) || { location: {} }
@@ -23,6 +34,8 @@ export const EmployeeDetail = () => {
     <section className="employee">
         <h3 className="employee__name">{ employee.name }</h3>
         <div className="employee__location_name">Location: { employee.location.name }</div>
+        <button onClick={handleLeave}>No Longer Work Here</button>
+
     </section>
     )
 }
