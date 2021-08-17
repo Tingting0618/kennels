@@ -12,7 +12,10 @@ export const AnimalProvider = (props) => {
         .then(res => res.json())
         .then(setAnimals)
     }
-
+    const getAnimalById = (animalId) => {
+        return fetch(`http://localhost:8088/animals/${animalId}`)
+        .then(res => res.json())
+    }
     
     const addAnimal = animalObj => {
         return fetch("http://localhost:8088/animals", {
@@ -51,7 +54,7 @@ export const AnimalProvider = (props) => {
     */
     return (
         <AnimalContext.Provider value={{
-            animals,getAnimals, addAnimal,releaseAnimal,updateAnimal
+            animals,getAnimals, addAnimal,releaseAnimal,updateAnimal,getAnimalById
         }}>
             {props.children}
         </AnimalContext.Provider>
