@@ -2,6 +2,7 @@ import React, { useRef } from "react"
 import { useHistory } from "react-router-dom"
 import "./Login.css"
 
+
 export const Register = (props) => {
     const firstName = useRef()
     const lastName = useRef()
@@ -12,7 +13,7 @@ export const Register = (props) => {
     const history = useHistory()
 
     const existingUserCheck = () => {
-        return fetch(`http://localhost:8088/customers?email=${email.current.value}`)
+        return fetch(`https://kennels-api.herokuapp.com/customers?email=${email.current.value}`)
             .then(res => res.json())
             .then(user => !!user.length)
     }
@@ -24,7 +25,7 @@ export const Register = (props) => {
         existingUserCheck()
             .then((userExists) => {
                 if (!userExists) {
-                    fetch("http://localhost:8088/customers", {
+                    fetch("https://kennels-api.herokuapp.com/customers", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
