@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom"
 import { useHistory } from 'react-router-dom'
 
 export const AnimalDetail = () => {
-    const { animals } = useContext(AnimalContext)
+     const { animals } = useContext(AnimalContext)
     const [animal, setAnimal] = useState({ location: {}, customer: {} })
 
     // Update this line of code to include releaseAnimal
@@ -31,7 +31,7 @@ export const AnimalDetail = () => {
     }, [animalId])
 
     return (
-        <section className="animal">
+        <section className="animal" id={`animal--${animal.id}`} >
             <h3 className="animal__name">{animal.name}</h3>
             <div className="animal__breed">{animal.breed}</div>
             <div className="animal__location">Location: {animal.location.name}</div>
