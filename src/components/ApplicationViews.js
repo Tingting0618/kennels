@@ -36,7 +36,6 @@ export const ApplicationViews = () => {
                                 <LocationList />
                             </Route>
 
-
                             <Route exact path="/locations/create">
                                 <LocationForm />
                             </Route>
