@@ -27,23 +27,7 @@ export const AnimalForm = () => {
   const {animalId} = useParams();
   const history = useHistory();
 
-  /*
-  Reach out to the world and get customers state
-  and locations state on initialization.
-  */
-  useEffect(() => {
-    getCustomers().then(getLocations).then(() => {
-      if(animalId) {
-        getAnimalById(animalId)
-        .then(animal => {
-          setAnimal(animal)
-          setIsLoading(false)
-        })
-      } else {
-          setIsLoading(false)
-      }
-    })
-  }, [])
+
 
   /*when a field changes, update state. 
   The return will re-render and display based on the values in state
@@ -96,6 +80,22 @@ export const AnimalForm = () => {
       }
     }
   }
+
+  /*Reach out to the world and get customers state
+  and locations state on initialization.*/
+  useEffect(() => {
+    getCustomers().then(getLocations).then(() => {
+      if(animalId) {
+        getAnimalById(animalId)
+        .then(animal => {
+          setAnimal(animal)
+          setIsLoading(false)
+        })
+      } else {
+          setIsLoading(false)
+      }
+    })
+  }, [])
 
   return (
     <form className="animalForm">
