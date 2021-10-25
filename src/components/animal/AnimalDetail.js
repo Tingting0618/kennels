@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react"
 import { AnimalContext } from "./AnimalProvider"
-import { useParams,useHistory } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import "./Animal.css"
 
 export const AnimalDetail = () => {
-    const { animals,releaseAnimal } = useContext(AnimalContext)
+    const { animals, releaseAnimal } = useContext(AnimalContext)
     const [animal, setAnimal] = useState({ location: {}, customer: {} })
     /*
         Given the example URL above, this will store the value

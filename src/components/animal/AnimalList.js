@@ -37,14 +37,15 @@ export const AnimalList = () => {
 
       <div className="animals">
         {
-          filteredAnimals.map(animal =>{
+          filteredAnimals.map(animal => {
             return (
-            <div className="animal">
-              <Link to={`/animals/detail/${animal.id}`}>
-                {animal.name}
-              </Link>
-            </div>
-          )}
+              <div className="animal">
+                <Link to={`/animals/detail/${animal.id}`}>
+                  {animal.name}
+                </Link>
+              </div>
+            )
+          }
           )
         }
       </div>

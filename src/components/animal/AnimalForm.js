@@ -54,7 +54,7 @@ export const AnimalForm = () => {
   }
 
   const handleClickSaveAnimal = () => {
-    if (locationId === 0 || customerId === 0) {
+    if (animal.locationId === 0 || animal.customerId === 0) {
       window.alert("Please select a location and a customer")
     } else {
       //Invoke addAnimal passing the new animal object as an argument
