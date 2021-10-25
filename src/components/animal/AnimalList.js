@@ -1,14 +1,12 @@
 // Add this import at the top
-import { useHistory, Link } from 'react-router-dom'
 import React, { useContext, useEffect, useState } from "react"
 import { AnimalContext } from "./AnimalProvider"
-import { AnimalDetail } from "./AnimalDetail"
+import { useHistory, Link } from 'react-router-dom'
 import "./Animal.css"
 
 export const AnimalList = () => {
   // This state changes when `getAnimals()` is invoked below
   const { animals, getAnimals, searchTerms } = useContext(AnimalContext)
-  const { releaseAnimal } = useContext(AnimalContext)
   // Since you are no longer ALWAYS displaying all of the animals
   const [filteredAnimals, setFiltered] = useState([])
   const history = useHistory()
@@ -29,8 +27,6 @@ export const AnimalList = () => {
     }
   }, [searchTerms, animals])
 
-
-
   return (
     <>
       <h1>Animals</h1>
@@ -38,7 +34,6 @@ export const AnimalList = () => {
       <button onClick={() => history.push("/animals/create")}>
         Make Reservation
       </button>
-
 
       <div className="animals">
         {
@@ -56,33 +51,3 @@ export const AnimalList = () => {
     </>
   )
 }
-            // {
-            // return <AnimalDetail key={animal.id} animal={animal} />
-
-          //   const handleRelease = () => {
-          //     releaseAnimal(animal.id)
-          //         .then(() => {
-          //             history.push("/animals")
-          //         })
-          // }
-          //   return (
-          //     <section className="animal" id={`animal--${animal.id}`} >
-          //         <h3 className="animal__name">{animal.name}</h3>
-          //         <div className="animal__breed">{animal.breed}</div>
-          //         <div className="animal__location">Location: {animal.location.name}</div>
-          //         <div className="animal__owner">Customer: {animal.customer.name}</div>
-          //         <button onClick={handleRelease}>Release Animal</button>
-
-          //         <button onClick={() => {
-          //             history.push(`/animals/edit/${animal.id}`)
-          //         }}>Edit</button>
-          //     </section>
-          // )
-
-//           })
-//         }
-//       </div>
-//     </>
-//   )
-// }
-
