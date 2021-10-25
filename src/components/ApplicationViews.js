@@ -16,7 +16,6 @@ import { LocationForm } from "./location/LocationForm"
 import { LocationDetail } from "./location/LocationDetail"
 import { AnimalSearch } from "./animal/AnimalSearch"
 
-
 export const ApplicationViews = () => {
     return (
         <>

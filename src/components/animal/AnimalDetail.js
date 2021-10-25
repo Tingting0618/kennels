@@ -1,23 +1,11 @@
 import React, { useContext, useEffect, useState } from "react"
 import { AnimalContext } from "./AnimalProvider"
+import { useParams,useHistory } from "react-router-dom"
 import "./Animal.css"
-import { useParams } from "react-router-dom"
-import { useHistory } from 'react-router-dom'
 
 export const AnimalDetail = () => {
-     const { animals } = useContext(AnimalContext)
+    const { animals,releaseAnimal } = useContext(AnimalContext)
     const [animal, setAnimal] = useState({ location: {}, customer: {} })
-
-    // Update this line of code to include releaseAnimal
-    const { releaseAnimal } = useContext(AnimalContext)
-    const history = useHistory()
-
-    const handleRelease = () => {
-        releaseAnimal(animal.id)
-            .then(() => {
-                history.push("/animals")
-            })
-    }
     /*
         Given the example URL above, this will store the value
         of 5 in the animalId variable
@@ -26,9 +14,17 @@ export const AnimalDetail = () => {
 
     useEffect(() => {
         const thisAnimal = animals.find(a => a.id === parseInt(animalId)) || { location: {}, customer: {} }
-
         setAnimal(thisAnimal)
     }, [animalId])
+
+    // Update this line of code to include releaseAnimal
+    const history = useHistory()
+    const handleRelease = () => {
+        releaseAnimal(animal.id)
+            .then(() => {
+                history.push("/animals")
+            })
+    }
 
     return (
         <section className="animal" id={`animal--${animal.id}`} >

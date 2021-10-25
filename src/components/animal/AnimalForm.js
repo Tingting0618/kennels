@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react"
 import { LocationContext } from "../location/LocationProvider"
 import { AnimalContext } from "../animal/AnimalProvider"
 import { CustomerContext } from "../customer/CustomerProvider"
-import "./Animal.css"
 import { useHistory , useParams } from 'react-router-dom';
+import "./Animal.css"
 
 
 export const AnimalForm = () => {
@@ -13,8 +13,8 @@ export const AnimalForm = () => {
   const { customers, getCustomers } = useContext(CustomerContext)
   
   /*
-  With React, we do not target the DOM with `document.querySelector()`. Instead, our return (render) reacts to state or props.
-
+  With React, we do not target the DOM with `document.querySelector()`. 
+  Instead, our return (render) reacts to state or props.
   Define the intial state of the form inputs with useState()
   */
 
@@ -45,8 +45,9 @@ export const AnimalForm = () => {
     })
   }, [])
 
-  //when a field changes, update state. The return will re-render and display based on the values in state
-  //Controlled component
+  /*when a field changes, update state. 
+  The return will re-render and display based on the values in state
+  Controlled component*/
   const handleControlledInputChange = (event) => {
     /* When changing a state object or array,
     always create a copy, make changes, and then set state.*/
@@ -137,7 +138,12 @@ export const AnimalForm = () => {
           </select>
         </div>
       </fieldset>
-      <button className="btn btn-primary" onClick={handleClickSaveAnimal}>
+      <button className="btn btn-primary" 
+      disabled={isLoading}
+      onClick={event=>{
+        event.preventDefault()
+        handleClickSaveAnimal()
+      }}>
       {animalId ? <>Save Animal</> : <>Add Animal</>}
       </button>
     </form>
